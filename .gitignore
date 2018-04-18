@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 venv
 .idea
-users.txt
-mac-addresses.txt
+5.0/files/users.txt
+5.0/files/mac-addresses.txt
+files

@@ -11,15 +11,19 @@ commands = ['address 192.168.0.1 255.255.255.0 client-identifier ',
             'dns-server 192.168.0.4 8.8.8.8',
             'exit']
 
-users = ['test55', 'test1', 'test2', 'test3','123','53453','85467856','hsdfh', 'fasdfsav', 'ytwergve']
+users = open('users.txt', 'r')
+MACs = open('mac-addresses.txt', 'r')
 
-a = users[-1]
-b = users.index(a)+1
+users_list = users.readlines()
+MAC_list = MACs.readlines()
 
-file = open('file.txt', 'r')
-list = file.readlines()
+a = users_list[-1]
+b = users_list.index(a)+1
 
 for i in range(b):
-    print('user: {}'.format(users[i]))
-    print('   ip: 192.168.0.{}'.format(i+1))
-    print('   mac: 01:{}'.format(list[i].upper()))
+    print('ip dhcp pool host {}'.format(users_list[i].strip()))
+    print('address 192.168.0.{} 255.255.255.0 '.format(i+1) + 'client-identifier 01:{}'.format(MAC_list[i].lower().strip()))
+    print('default-router 192.168.0.3')
+    print('dns-server 192.168.0.4 8.8.8.8')
+    print('exit')
+    print('_'*100)
